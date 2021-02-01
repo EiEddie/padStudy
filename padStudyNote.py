@@ -53,7 +53,7 @@ def StudyNoteOut(noteTitle):
 		)#特殊字符转义
 	return noteContent
 
-conn = sqlite3.connect('/storage/emulated/0/储存/临时/提分派/note.db')
+conn = sqlite3.connect('/storage/emulated/0/储存/临时/padStudy01/note.db')
 note = conn.cursor()#打开文件并设置游标
 #if __name__ == "__main__":
 
