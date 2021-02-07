@@ -47,6 +47,18 @@ INSERT INTO Note VALUES(null,
 ```
 同样地，如果我们修改`audioPath`即可插入音频，修改`recyclebin`即可移动到回收站内
 
+此外，我们还需要将刚刚写入的笔记记录到`Category_Note`表中
+
+首先通过`noteLocalVersion`变量获取笔记的`id`值:
+```SQL
+SELECT id FROM Note WHERE localVersion=<noteLocalVersion>
+```
+将获得的`id`值记录在变量`noteId`中后，利用其作为中间变量将`id`值插入`Category_Note`表中:
+```SQL
+INSERT INTO Category_Note VALUES(<noteCategory>,
+                                 <noteId>)
+```
+
 ### Out
 同样使用SQL语句读出指定笔记html格式文本:
 ```SQL
