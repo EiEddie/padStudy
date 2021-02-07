@@ -15,6 +15,7 @@ import time, uuid, random
 escapedCharacter = [ "<", ">", "&", "\'", "\"", "\n", "\u00a0", "\u00ad" ]
 scapeCharacter = [ "&lt;", "&gt;", "&amp;", "&apos;", "&quot;", "<br>", "&nbsp;", "&shy;" ]
 #特殊字符
+
 for i in range(0,8):
 	noteContent = noteContent.replace(
 		escapedCharacter[i], scapeCharacter[i]
