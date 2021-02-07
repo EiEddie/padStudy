@@ -49,9 +49,9 @@ INSERT INTO Note VALUES(null,
 
 此外，我们还需要将刚刚写入的笔记记录到`Category_Note`表中
 
-首先通过`noteLocalVersion`变量获取笔记的`id`值:
+首先通过`noteUUID`变量获取笔记的`id`值:
 ```SQL
-SELECT id FROM Note WHERE localVersion=<noteLocalVersion>
+SELECT id FROM Note WHERE noteUUID=<noteUUID>
 ```
 将获得的`id`值记录在变量`noteId`中后，利用其作为中间变量将`id`值插入`Category_Note`表中:
 ```SQL
@@ -64,7 +64,7 @@ INSERT INTO Category_Note VALUES(<noteCategory>,
 ```SQL
 SELECT content FROM Note WHERE title=<noteTitle>
 ```
-将文本储存在变量`noteContent`后对其中特殊符号进行反转义:
+将文本储存在变量`noteContent`后对其中特殊符号进行反转义，将其添加到列表`noteContentList`中:
 ```python
 escapedCharacter = [ "<", ">", "&", "\'", "\"", "\n", "\u00a0", "\u00ad" ]
 scapeCharacter = [ "&lt;", "&gt;", "&amp;", "&apos;", "&quot;", "<br>", "&nbsp;", "&shy;" ]
@@ -75,7 +75,7 @@ for i in range(0,8):
 		scapeCharacter[i], escapedCharacter[i]
 	)
 ```
-即可得到正常格式的文本，储存在变量`noteContent`中
+即可得到所有符合条件的正常格式的文本，储存在变量`noteContent`中
 
 ## UserHome
 这个稍微简单一点。。
