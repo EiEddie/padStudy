@@ -22,7 +22,7 @@ StudyNoteIn(noteContent, noteTitle, noteCategory)
 ```python
 StudyNoteOut(noteTitle)
 ```
-`noteTitle`即为标题
+`noteTitle`即为标题，函数输出一个列表
 
 使用前请先按以下方法指定文件位置
 ```python
