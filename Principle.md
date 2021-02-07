@@ -1,5 +1,6 @@
 # Principle
 ## NoteBook
+### In
 `NoteBook`的`note.db`文件内有表`Note`，下有14列，分别为
 `id` `audioPath` `content` `localVersion` `noteUUID` `recyclebin` `recyclebinVersion` `serverNoteId` `summary` `time` `title` `type` `updateTime` `uuid`
 
@@ -44,6 +45,24 @@ INSERT INTO Note VALUES(null,
                        "")
 ```
 同样地，如果我们修改`audioPath`即可插入音频，修改`recyclebin`即可移动到回收站内
+
+### Out
+同样使用SQL语句读出指定笔记html格式文本:
+```SQL
+SELECT content FROM Note WHERE title=<noteTitle>
+```
+将文本储存在变量`noteContent`后对其中特殊符号进行反转义:
+```python
+escapedCharacter = [ "<", ">", "&", "\'", "\"", "\n", "\u00a0", "\u00ad" ]
+scapeCharacter = [ "&lt;", "&gt;", "&amp;", "&apos;", "&quot;", "<br>", "&nbsp;", "&shy;" ]
+#特殊字符
+
+for i in range(0,8):
+	noteContent = noteContent.replace(
+		scapeCharacter[i], escapedCharacter[i]
+	)
+```
+即可得到正常格式的文本，储存在变量`noteContent`中
 
 ## UserHome
 这个稍微简单一点。。
