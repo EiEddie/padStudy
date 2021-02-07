@@ -15,7 +15,8 @@ StudyNoteIn(noteContent, noteTitle, noteCategory)
 6:生物  
 7:政治  
 8:地理  
-9:历史
+9:历史  
+10.其他
 
 同理通过调用以下函数读取笔记:
 ```python
