@@ -36,7 +36,7 @@ def StudyUserHomeIn(usFilePath, usClassName="其它"):
 conn = sqlite3.connect('/storage/emulated/0/储存/临时/padStudy01/userdata(1).db')
 userHome = conn.cursor()#打开文件并设置游标
 if __name__ == "__main__":
-	a = "/storage/emulated/0/储存/文档/BE转PC教程.pdf"
+	a = "/storage/emulated/0/test.pdf"
 	StudyUserHomeIn(a)
 
 conn.commit()
