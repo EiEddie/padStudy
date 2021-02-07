@@ -12,7 +12,7 @@
 ```python
 import time, uuid, random
 
-escapedCharacter = [ "<", ">", "&", "\'", "\"", "\n", "\u00a0", "\u00ad" ]
+escapedCharacter = [ "<", ">", "&", "\'", "\"", "\n", " ", "\u00ad" ]
 scapeCharacter = [ "&lt;", "&gt;", "&amp;", "&apos;", "&quot;", "<br>", "&nbsp;", "&shy;" ]
 #特殊字符
 
@@ -64,18 +64,36 @@ INSERT INTO Category_Note VALUES(<noteCategory>,
 ```SQL
 SELECT content FROM Note WHERE title=<noteTitle>
 ```
-将文本储存在变量`noteContent`后对其中特殊符号进行反转义，将其添加到列表`noteContentList`中:
+并将文本储存在列表`noteText`中
+
+定义函数`noteHtmlToText()`将html格式文本转为纯文本:
 ```python
-escapedCharacter = [ "<", ">", "&", "\'", "\"", "\n", "\u00a0", "\u00ad" ]
+import re
+
+escapedCharacter = [ "<", ">", "&", "\'", "\"", "\n", " ", "\u00ad" ]
 scapeCharacter = [ "&lt;", "&gt;", "&amp;", "&apos;", "&quot;", "<br>", "&nbsp;", "&shy;" ]
 #特殊字符
 
-for i in range(0,8):
-	noteContent = noteContent.replace(
-		scapeCharacter[i], escapedCharacter[i]
+def noteHtmlToText(noteContent):
+	#转义函数
+	noteContent = re.sub(
+		r"<(?!br).*?>", "", noteContent
 	)
+	for i in range(0,8):
+		noteContent = noteContent.replace(
+			scapeCharacter[i], escapedCharacter[i]
+		)
+	return noteContent
 ```
-即可得到所有符合条件的正常格式的文本，储存在变量`noteContent`中
+依次读取列表`noteText`中字符串，使用`noteHtmlToText()`转义后将其添加到列表`noteContentList`中:
+```python
+for i in noteText:
+#读取正文
+	noteContentList.append(
+		noteHtmlToText(tuple(i)[0])
+	)#转义
+```
+即可得到所有符合条件的正常格式的文本，储存在列表`noteContentList`中
 
 ## UserHome
 这个稍微简单一点。。
