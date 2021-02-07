@@ -6,7 +6,7 @@ escapedCharacter = [ "<", ">", "&", "\'", "\"", "\n", "\u00a0", "\u00ad" ]
 scapeCharacter = [ "&lt;", "&gt;", "&amp;", "&apos;", "&quot;", "<br>", "&nbsp;", "&shy;" ]
 #特殊字符
 
-def StudyNoteIn(noteContent="", noteTitle="title"):
+def StudyNoteIn(noteContent="", noteTitle="title", noteCategory="1"):
 	#写入函数
 	for i in range(0,8):
 		noteContent = noteContent.replace(
@@ -32,8 +32,8 @@ def StudyNoteIn(noteContent="", noteTitle="title"):
 	)
 	noteId = note.fetchall()
 	note.execute(
-		'''INSERT INTO Category_Note VALUES("1","{0}")'''
-		.format(tuple(noteId[0])[0])
+		'''INSERT INTO Category_Note VALUES("{0}","{1}")'''
+		.format(noteCategory, tuple(noteId[0])[0])
 	)#记录到Category_Note表中
 
 
