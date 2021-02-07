@@ -2,16 +2,27 @@
 某不知名电子垃圾内应用的读写
 
 ## 1.NoteBook
-通过调用函数
+通过调用以下函数写入:
 ```python
-StudyNoteIn(noteContent, noteTitle)
+StudyNoteIn(noteContent, noteTitle, noteCategory)
 ```
-实现写入，
-同理通过调用函数
+其中`noteContect`为正文; `noteTitle`为标题，默认为空; `noteCategory`为科目，默认为1:语文，对应关系如下:
+>1:语文  
+2:数学  
+3:英语  
+4:物理  
+5:化学  
+6:生物  
+7:政治  
+8:地理  
+9:历史
+
+同理通过调用以下函数读取笔记:
 ```python
 StudyNoteOut(noteTitle)
 ```
-实现读取
+`noteTitle`即为标题
+
 使用前请先按以下方法指定文件位置
 ```python
 conn = sqlite3.connect('FilePath')
@@ -23,11 +34,12 @@ conn.close()#关闭游标并关闭文件
 ```
 
 ## 2.UserHome
-调用函数
+调用以下函数写入:
 ```python
 StudyUserHomeIn(usFilePath, usClassName)
 ```
-写入，
+其中`usFilePath`为文件地址; `usClassName`为科目
+
 请注意此函数仅修改`database`文件，调用时请修改以下源码语句选择合适文件夹并将其内文件转移到`/padStudy01/UserHome/video`文件夹内
 ```python
 shutil.copyfile(
