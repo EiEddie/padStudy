@@ -25,8 +25,26 @@ def StudyUserHomeIn(usFilePath, usClassName="其它"):
 	#变量赋值
 
 	userHome.execute(
-		'''INSERT INTO lessonResource VALUES(null,"","","{0}","","{1}",0,{2},"",{3},"","{4}","","")'''
-		.format(usFileName, usHomeWork, usTime, usFileSize, usClassName)
+		'''INSERT INTO lessonResource VALUES(
+						null,
+						"",
+						"",
+						"{0}",
+						"",
+						"{1}",
+						0,
+						{2},
+						"",
+						{3},
+						"",
+						"{4}",
+						"",
+						"")'''
+		.format(usFileName, 
+			usHomeWork, 
+			usTime, 
+			usFileSize, 
+			usClassName)
 	)#写入
 
 	shutil.copyfile(
