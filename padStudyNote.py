@@ -20,8 +20,27 @@ def StudyNoteIn(noteContent="", noteTitle="title", noteCategory="1"):
 		random.randint(97,122)) + chr(
 		random.randint(97,122))#变量赋值
 	note.execute(
-		'''INSERT INTO Note VALUES(null,"null","{0}","{1}","{2}",0,"",0,"{3}",{4},"{5}",1000,{4},"")'''
-		.format(noteContent,noteLocalVersion,noteUUID,noteSummary,noteTime,noteTitle)
+		'''INSERT INTO Note VALUES(
+					null,
+					"null",
+					"{0}",
+					"{1}",
+					"{2}",
+					0,
+					"",
+					0,
+					"{3}",
+					{4},
+					"{5}",
+					1000,
+					{4},
+					"")'''
+		.format(noteContent,
+			noteLocalVersion,
+			noteUUID,
+			noteSummary,
+			noteTime,
+			noteTitle)
 	)#写入正文
 	note.execute(
 		'''SELECT id FROM Note WHERE noteUUID="{0}"'''
@@ -29,8 +48,11 @@ def StudyNoteIn(noteContent="", noteTitle="title", noteCategory="1"):
 	)
 	noteId = note.fetchall()
 	note.execute(
-		'''INSERT INTO Category_Note VALUES("{0}","{1}")'''
-		.format(noteCategory, tuple(noteId[0])[0])
+		'''INSERT INTO Category_Note VALUES(
+						"{0}",
+						"{1}")'''
+		.format(noteCategory, 
+			tuple(noteId[0])[0])
 	)#记录到Category_Note表中
 
 def noteHtmlToText(noteContent):
