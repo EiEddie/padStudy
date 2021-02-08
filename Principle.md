@@ -158,6 +158,6 @@ import shutil
 
 shutil.copyfile(
 	usFilePath,r"UserHomeFile\%s"%usFileName
-)#复制并改名(文件夹请自行设置!)
+)#复制并改名
 ```
 它可以将文件重命名后复制到我们所指定的文件夹内，方便后续我们手动将其拷入应用下的文件夹
