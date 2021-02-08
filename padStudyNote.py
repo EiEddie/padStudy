@@ -81,7 +81,7 @@ def StudyNoteOut(noteTitle):
 		)#转义
 	return noteContentList
 
-conn = sqlite3.connect('/storage/emulated/0/储存/临时/padStudy01/note.db')
+conn = sqlite3.connect('note.db')
 note = conn.cursor()#打开文件并设置游标
 #if __name__ == "__main__":
 
