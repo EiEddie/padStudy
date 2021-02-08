@@ -48,14 +48,12 @@ def StudyUserHomeIn(usFilePath, usClassName="其它"):
 	)#写入
 
 	shutil.copyfile(
-		usFilePath,"UserHomeFile/%s"%usFileName
+		usFilePath,r"UserHomeFile\%s"%usFileName
 	)#复制并改名
 
-conn = sqlite3.connect('/storage/emulated/0/储存/临时/padStudy01/userdata(1).db')
+conn = sqlite3.connect('userdata.db')
 userHome = conn.cursor()#打开文件并设置游标
-if __name__ == "__main__":
-	a = "/storage/emulated/0/test.pdf"
-	StudyUserHomeIn(a)
+#if __name__ == "__main__":
 
 conn.commit()
 userHome.close()
