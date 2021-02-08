@@ -41,11 +41,11 @@ StudyUserHomeIn(usFilePath, usClassName)
 ```
 其中`usFilePath`为文件地址; `usClassName`为科目
 
-请注意此函数仅修改`database`文件，调用时请修改以下源码语句选择合适文件夹并将其内文件转移到`/padStudy01/UserHome/video`文件夹内
+请注意此函数仅修改`database`文件，调用时请将`UserHomeFile`文件夹内文件转移到`/padStudy01/UserHome/video`文件夹
 ```python
 shutil.copyfile(
-	usFilePath,"/storage/emulated/0/%s"%usFileName
-)#复制并改名(文件夹请自行设置!)
+	usFilePath,r"UserHomeFile\%s"%usFileName
+)#复制并改名
 ```
 同理使用前请先按以下方法指定文件位置
 ```python
