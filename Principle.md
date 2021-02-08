@@ -103,9 +103,10 @@ for i in noteText:
 
 应用通过读取这14列记录文件信息
 
-其中`filepath`为文件在文件夹内的名字(包括扩展名); `homework`为文件原名(同样带扩展名); `datetime`为文件下载时间; `filesize`为文件大小(单位Bit); `classname`为所属学科
+其中`filepath`为文件在文件夹内的名字(包括扩展名); `homework`为文件原名(同样带扩展名); `datetime`为文件下载时时间; `filesize`为文件大小(单位Bit); `classname`为所属学科
 
-我们首先利用一些函数获取所需参数。
+我们首先利用一些函数获取所需参数
+
 因不知道原应用`filepath`的命名方式是什么，我使用了文件哈希值，下为哈希算法:
 ```python
 import hashlib
@@ -156,7 +157,7 @@ INSERT INTO lessonResource VALUES(null,
 import shutil
 
 shutil.copyfile(
-	usFilePath,"/storage/emulated/0/%s"%usFileName
+	usFilePath,r"UserHomeFile\%s"%usFileName
 )#复制并改名(文件夹请自行设置!)
 ```
 它可以将文件重命名后复制到我们所指定的文件夹内，方便后续我们手动将其拷入应用下的文件夹
