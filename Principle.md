@@ -124,6 +124,10 @@ def UsHash(usFilePath, Bytes=1024):
 	usHash = usMd5.hexdigest()
 	return usHash
 ```
+但经过我反复实验后发现，使用哪种编码命名都不会影响文件的读取...
+
+于是干脆对被导入文件的地址求哈希值，可以极大减小时间复杂度  
+  
 接下来就可以对所需变量赋值了:
 ```python
 import os, time
