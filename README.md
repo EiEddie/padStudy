@@ -41,13 +41,13 @@ conn.close()#关闭游标并关闭文件
 StudyUserHomeIn(usFilePath, usClassName)
 ```
 其中`usFilePath`为文件地址; `usClassName`为科目
-
-请注意此函数仅修改`database`文件，调用时请将`UserHomeFile`文件夹内文件转移到`/padStudy01/UserHome/video`文件夹
 ```python
 shutil.copyfile(
 	usFilePath,r"UserHomeFile\%s"%usFileName
 )#复制并改名
 ```
+请注意此函数仅修改`database`文件，调用时请将`UserHomeFile`文件夹内文件转移到`/padStudy01/UserHome/video`文件夹
+
 同理使用前请先按以下方法指定文件位置
 ```python
 conn = sqlite3.connect('FilePath')
