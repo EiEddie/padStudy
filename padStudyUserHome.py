@@ -21,7 +21,7 @@ def StudyUserHomeIn(usFilePath, usClassName="其它"):
 	usTime = int(round(time.time()*1000))
 	usFileExtension = os.path.splitext(usFilePath)[-1]
 	usMd5 = hashlib.md5()
-	usMd5.update(usFilePath)
+	usMd5.update(bytes(usFilePath,"utf-8"))
 	usHsah = usMd5.hexdigest()
 	usFileName = usHash + usFileExtension
 	#变量赋值
