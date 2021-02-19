@@ -23,7 +23,7 @@ def StudyUserHomeIn(usFilePath, usClassName="其它"):
 	usMd5 = hashlib.md5()
 	usMd5.update(usFilePath)
 	usHsah = usMd5.hexdigest()
-	usFileName = UsHash + usFileExtension
+	usFileName = usHash + usFileExtension
 	#变量赋值
 
 	userHome.execute(
