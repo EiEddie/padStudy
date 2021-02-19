@@ -2,26 +2,28 @@ import sqlite3
 import time, hashlib
 import os, shutil
 
-def UsHash(usFilePath, Bytes=1024):
-	#获取文件哈希值
-	usMd5 = hashlib.md5()
-	with open(usFilePath,"rb") as usFile:
-		while True:
-			usFileData = usFile.read(Bytes)
-			if usFileData:
-				usMd5.update(usFileData)
-			else:
-				break
-	usHash = usMd5.hexdigest()
-	return usHash
+#def UsHash(usFilePath, Bytes=1024):
+#	#获取文件哈希值
+#	usMd5 = hashlib.md5()
+#	with open(usFilePath,"rb") as usFile:
+#		while True:
+#			usFileData = usFile.read(Bytes)
+#			if usFileData:
+#				usMd5.update(usFileData)
+#			else:
+#				break
+#	usHash = usMd5.hexdigest()
+#	return usHash
 
 def StudyUserHomeIn(usFilePath, usClassName="其它"):
 	usHomeWork = os.path.basename(usFilePath)
 	usFileSize = os.path.getsize(usFilePath)
 	usTime = int(round(time.time()*1000))
 	usFileExtension = os.path.splitext(usFilePath)[-1]
-	usFileName = UsHash(
-		usFilePath) + usFileExtension
+	usMd5 = hashlib.md5()
+	usMd5.update(usFilePath)
+	usHsah = usMd5.hexdigest()
+	usFileName = UsHash + usFileExtension
 	#变量赋值
 
 	userHome.execute(
