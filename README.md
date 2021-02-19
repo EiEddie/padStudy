@@ -1,7 +1,7 @@
 # padStudy
 某不知名电子垃圾内应用的读写
 
-## 1.NoteBook
+## 1.NoteBook(py only
 通过调用以下函数写入:
 ```python
 StudyNoteIn(noteContent, noteTitle, noteCategory)
@@ -35,6 +35,7 @@ conn.close()#关闭游标并关闭文件
 ```
 
 ## 2.UserHome
+### py
 调用以下函数写入:
 ```python
 StudyUserHomeIn(usFilePath, usClassName)
@@ -56,3 +57,15 @@ conn.commit()
 userHome.close()
 conn.close()#关闭游标并关闭文件
 ```
+
+### C++
+编译`demo.cpp`后运行，依次填入文件地址和文件保存位置后自动写入
+
+或调用以下函数写入
+```cpp
+StudyUserHomeIn(string usFilePath, string usClassName)
+```
+
+其中`usFilePath`为文件地址; `usClassName`为科目
+
+请注意以上方法均仅修改`database`文件，使用时请将`UserHomeFile`文件夹内文件转移到`/padStudy01/UserHome/video`文件夹
