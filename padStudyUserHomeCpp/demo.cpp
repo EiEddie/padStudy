@@ -9,5 +9,6 @@ int main(int argc, char *argv[]) {
 	string fileClassName;
 	getline(cin, fileClassName);
 	StudyUserHomeIn(filePath, fileClassName);
+	system("pause");
 	return 0;
 }
